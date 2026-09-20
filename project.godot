@@ -11,6 +11,11 @@ config_version=5
 [application]
 
 config/name="jumpstart"
+run/main_scene="uid://qoqlqyifuqrc"
 config/features=PackedStringArray("4.7")
 boot_splash/bg_color=Color(0.15294118, 0.42352942, 0.7254902, 1)
 config/icon="res://assets/icon.svg"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.17254902, 0.26666668, 0.6901961, 1)
