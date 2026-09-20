@@ -1,0 +1,100 @@
+[gd_scene format=4 uid="uid://qoqlqyifuqrc"]
+
+[ext_resource type="Texture2D" uid="uid://b4glr5lg8dohp" path="res://grass.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://5debcl6mbdih" path="res://player.gd" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://clj50mofbx2jq" path="res://assets/icon.svg" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dbspavgxjiwev" path="res://parry.png" id="4_1bvp3"]
+
+[sub_resource type="TileSet" id="TileSet_hfb4q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
+texture = ExtResource("1_ig7tw")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_fiaci"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0xm2m")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfb4q"]
+size = Vector2(37, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfb4q"]
+radius = 26.076809
+
+[node name="main" type="Node2D" unique_id=1788206140]
+
+[node name="TileMap" type="TileMap" parent="." unique_id=864362093]
+tile_set = SubResource("TileSet_hfb4q")
+format = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1044178166]
+tile_map_data = PackedByteArray("AAAKABsAAAAAAAAAAAAKABwAAAAAAAAAAAALABwAAAAAAAAAAAAMABwAAAAAAAAAAAANABwAAAAAAAAAAAAOABwAAAAAAAAAAAAPABwAAAAAAAAAAAAQABwAAAAAAAAAAAARABwAAAAAAAAAAAASABwAAAAAAAAAAAATABwAAAAAAAAAAAAUAB0AAAAAAAAAAAAVAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAaAB0AAAAAAAAAAAAbAB0AAAAAAAAAAAAcAB0AAAAAAAAAAAAdAB0AAAAAAAAAAAAeAB0AAAAAAAAAAAAfAB0AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAiAB0AAAAAAAAAAAAjAB0AAAAAAAAAAAAkAB0AAAAAAAAAAAAlAB0AAAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAAoAB0AAAAAAAAAAAApAB0AAAAAAAAAAAAqAB0AAAAAAAAAAAArAB0AAAAAAAAAAAAsABwAAAAAAAAAAAAtABwAAAAAAAAAAAAuABwAAAAAAAAAAAAvABwAAAAAAAAAAAAvABsAAAAAAAAAAAAwABsAAAAAAAAAAAAxABsAAAAAAAAAAAAyABsAAAAAAAAAAAAzABsAAAAAAAAAAAA0ABsAAAAAAAAAAAA1ABsAAAAAAAAAAAA2ABoAAAAAAAAAAAA3ABoAAAAAAAAAAAAsABUAAAAAAAAAAAAtABUAAAAAAAAAAAAuABUAAAAAAAAAAAAuABYAAAAAAAAAAAAvABYAAAAAAAAAAAAwABYAAAAAAAAAAAAxABYAAAAAAAAAAAAyABYAAAAAAAAAAAAzABYAAAAAAAAAAAA2ABAAAAAAAAAAAAA3ABAAAAAAAAAAAAA4ABAAAAAAAAAAAAA5ABAAAAAAAAAAAAA6ABAAAAAAAAAAAAA7AA8AAAAAAAAAAAA8AA8AAAAAAAAAAAA9AA4AAAAAAAAAAABlAA8AAAAAAAAAAABmAA8AAAAAAAAAAABnAA8AAAAAAAAAAABoAA8AAAAAAAAAAABpABAAAAAAAAAAAABqABAAAAAAAAAAAABrABAAAAAAAAAAAABsABAAAAAAAAAAAABtABAAAAAAAAAAAABuABAAAAAAAAAAAABvABAAAAAAAAAAAABvAA8AAAAAAAAAAABwAA8AAAAAAAAAAABxAA8AAAAAAAAAAAByAA8AAAAAAAAAAAByAA4AAAAAAAAAAABzAA4AAAAAAAAAAAB+AAsAAAAAAAAAAAB/AAsAAAAAAAAAAACAAAsAAAAAAAAAAACBAAsAAAAAAAAAAACCAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_fiaci")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=395702135]
+position = Vector2(269, 351)
+script = ExtResource("2_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=131904621]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_hfb4q")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D" unique_id=1943878053]
+position = Vector2(-1.9073486e-06, -2.0000005)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("3_h2yge")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=900105411]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=494369306]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=319967114]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.97
+
+[node name="parry" type="Area2D" parent="." unique_id=1599921242 groups=["parry"]]
+position = Vector2(499, 379)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry" unique_id=1606526465]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="parry" unique_id=135788948]
+texture = ExtResource("4_1bvp3")
+
+[node name="parry2" type="Area2D" parent="." unique_id=1738819326 groups=["parry"]]
+position = Vector2(1104, 314)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry2" unique_id=232514931]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="parry2" unique_id=496268180]
+texture = ExtResource("4_1bvp3")
+
+[node name="parry3" type="Area2D" parent="." unique_id=788416438 groups=["parry"]]
+position = Vector2(1303, 307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry3" unique_id=2039234418]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="parry3" unique_id=1220698107]
+texture = ExtResource("4_1bvp3")
+
+[node name="parry4" type="Area2D" parent="." unique_id=193687171 groups=["parry"]]
+position = Vector2(1487, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry4" unique_id=1260350262]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="parry4" unique_id=218046355]
+texture = ExtResource("4_1bvp3")
+
+[node name="parry5" type="Area2D" parent="." unique_id=2004847158 groups=["parry"]]
+position = Vector2(1931, 248)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parry5" unique_id=276519086]
+shape = SubResource("CircleShape2D_hfb4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="parry5" unique_id=1451887613]
+texture = ExtResource("4_1bvp3")
